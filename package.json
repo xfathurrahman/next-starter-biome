@@ -1,0 +1,54 @@
+{
+  "name": "nextjs-starter",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "prepare": "husky",
+    "format": "biome format --write ./",
+    "check": "biome check --write ."
+  },
+  "dependencies": {
+    "@t3-oss/env-nextjs": "^0.11.1",
+    "next": "14.2.16",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@types/bun": "^1.1.12",
+    "@types/node": "^20.17.5",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "autoprefixer": "^10.4.20",
+    "commitizen": "^4.3.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.14",
+    "typescript": "^5.6.3"
+  },
+  "trustedDependencies": ["@biomejs/biome"],
+  "lint-staged": {
+    "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": [
+      "biome check --files-ignore-unknown=true",
+      "biome check --write --no-errors-on-unmatched",
+      "biome check --write --organize-imports-enabled=false --no-errors-on-unmatched",
+      "biome check --write --unsafe --no-errors-on-unmatched",
+      "biome format --write --no-errors-on-unmatched",
+      "biome lint --write --no-errors-on-unmatched"
+    ],
+    "*": ["biome check --no-errors-on-unmatched --files-ignore-unknown=true"],
+    "*.{ts,tsx}": ["tsc --noEmit"]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
